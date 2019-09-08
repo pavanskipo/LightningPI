@@ -1,0 +1,27 @@
+{
+  "name": "lightningpi_music",
+  "version": "1.0.0",
+  "description": "A music streaming app made using Node.js",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pavanskipo/LightningPI_music.git"
+  },
+  "author": "Pavan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pavanskipo/LightningPI_music/issues"
+  },
+  "homepage": "https://github.com/pavanskipo/LightningPI_music#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
+  }
+}

@@ -1,0 +1,6 @@
+# exclude everything
+public/music/*
+node_modules
+
+# exception to the rule
+!public/music/.gitkeep 
