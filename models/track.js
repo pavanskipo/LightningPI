@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const trackSchema = new Schema({
+    _id: {
+        type: String,
+        required: true
+    },
     track_name: {
         type: String,
         required: true

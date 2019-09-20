@@ -8,11 +8,14 @@ const mongoose = require('mongoose');
 
 const app = express();
 
+const trackRoutes = require('./routes/track');
+
 app.use(express.static(path.join(dirName, 'public')));
 
 
 
-
+// Routes
+app.use('/music', trackRoutes);
 
 // Database and Server connection
 mongoose
@@ -29,3 +32,16 @@ mongoose
         console.log(err);
     });
 
+
+    // const Product = require('./models/track');
+
+    // let p = new Product({
+    //     _id: '123456',
+    //     track_name: 'track_dummy',
+    //     track_image: '../../dummy',
+    //     track_location: '../../dummy',
+    //     track_description: 'blah blah blah',
+    //     track_tags: ['pop', 'rock', 'e;ectric'],
+    // })
+
+    // p.save();
