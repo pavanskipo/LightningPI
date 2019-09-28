@@ -11,7 +11,10 @@ const app = express();
 const trackRoutes = require('./routes/track');
 
 app.use(express.static(path.join(dirName, 'public')));
-
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+app.use(bodyParser.json());
 
 
 // Routes

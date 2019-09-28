@@ -1,4 +1,8 @@
 const Track = require('../models/track');
+const current_path = require('../utils/path');
+const upload = require('../utils/store_file');
+
+const path = require('path');
 
 exports.getPlayTrack = async (req, res, next) => {
     const id = req.query.track_id;
@@ -80,4 +84,31 @@ exports.getTracks = async (req, res, next) => {
     res.json(responseJson);
 }
 
-exports.postUploadTrack 
+exports.postUploadTrack = async (req, res, next) => {
+    let responseJson = {
+        status: 0,
+        result: []
+    };
+    console.log(req.body.track_description)
+    // let filePath = path.resolve(req.body.track_id, '_', req.body.track_name);
+    // req.filePath = path.resolve(current_path, 'public', 'music');
+    // let payload = {
+    //     // _id: req.body.track_id,
+    //     track_name: req.body.track_name,
+    //     track_image: path.resolve(current_path, filePath, '.jpg'),
+    //     track_location: path.resolve(current_path, filePath, '.mp3'),
+    //     track_description: req.body.track_description,
+    //     track_tags: req.body.track_tags,
+    // }
+    // console.log(payload);
+    upload(req, res, err => {
+        console.log(req.body)
+        if(err){
+            responseJson.result = 'Error while fetching track details';
+            console.log(err);
+        }
+
+    });
+
+    
+}
