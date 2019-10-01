@@ -1,6 +1,5 @@
 const Track = require('../models/track');
 const current_path = require('../utils/path');
-const upload = require('../utils/store_file');
 
 const path = require('path');
 
@@ -89,7 +88,7 @@ exports.postUploadTrack = async (req, res, next) => {
         status: 0,
         result: []
     };
-    console.log(req.body.track_description)
+    console.log(req)
     // let filePath = path.resolve(req.body.track_id, '_', req.body.track_name);
     // req.filePath = path.resolve(current_path, 'public', 'music');
     // let payload = {
@@ -101,14 +100,7 @@ exports.postUploadTrack = async (req, res, next) => {
     //     track_tags: req.body.track_tags,
     // }
     // console.log(payload);
-    upload(req, res, err => {
-        console.log(req.body)
-        if(err){
-            responseJson.result = 'Error while fetching track details';
-            console.log(err);
-        }
 
-    });
 
     
 }
