@@ -5,13 +5,13 @@ const image_upload = require('../utils/image_download');
 const path = require('path');
 
 exports.getPlayTrack = async (req, res, next) => {
-    const id = req.query.track_id;
+    const trackId = req.query.track_id;
     let responseJson = {
         status: 0,
         result: {}
     };
-    if(id){
-        await Track.findById(id)
+    if(trackId){
+        await Track.findById(trackId)
                 .then(track => {
                     responseJson.status = 1;
                     responseJson.result['track_id'] = track['_id'];
@@ -29,13 +29,13 @@ exports.getPlayTrack = async (req, res, next) => {
 }
 
 exports.getTrackDetails = async (req, res, next) => {
-    const id = req.query.track_id;
+    const trackId = req.query.track_id;
     let responseJson = {
         status: 0,
         result: {}
     };
-    if(id){
-        await Track.findById(id)
+    if(trackId){
+        await Track.findById(trackId)
                 .then(track => {
                     responseJson.status = 1;
                     responseJson.result['track_id'] = track['_id'];
@@ -58,7 +58,7 @@ exports.getTrackDetails = async (req, res, next) => {
 
 exports.getTracks = async (req, res, next) => {
     const tag = req.query.tag;
-    const searchPhrase = req.query.search_key;
+    const searchPhrase = req.query.search_phrase;
     let responseJson = {
         status: 0,
         result: []
@@ -97,10 +97,10 @@ exports.postUploadTrack = async (req, res, next) => {
     let payload = {
         _id: req.body.track_id,
         track_name: req.body.track_name,
-        track_image: path.resolve(current_path, fileName + '.jpg'),
-        track_location: path.resolve(current_path, fileName + '.mp3'),
+        track_image: path.join('music_images', fileName + '.jpg'),
+        track_location: path.join('music', fileName + '.mp3'),
         track_description: req.body.track_description,
-        track_tags: req.body.track_tags,
+        track_tags: req.body.track_tags.split(',').map(item => item.trim()),
     }
     const track = new Track(payload);
     try {
@@ -131,13 +131,15 @@ exports.postEditTrack = async (req, res, next) => {
     let changesArray = req.body.changes_array.split(',');
     Track.findById(req.body.track_id)
     .then(track => {
+        let current_name = track.track_name
         changesArray.forEach((state, index) => {
             if(+state === 1) {
                 if(index === 1){
                     image_upload(req.body.track_image,
-                        track._id + '_' + track.track_name + '.mp3');
+                        track._id + '_' + req.body.track_name,
+                        track._id + '_' + current_name + '.jpg');
+                    track.track_image = path.join('music_images', track._id + '_' + req.body.track_name + '.jpg')
                 } else {
-                    console.log(changesArrayMapping[index]);
                     track[changesArrayMapping[index]] = req.body[changesArrayMapping[index]]
                 }
             }
