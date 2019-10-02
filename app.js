@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 const trackRoutes = require('./routes/track');
+const movieRoutes = require('./routes/movie');
 
 app.use(express.static(path.join(dirName, 'public')));
 app.use(bodyParser.urlencoded({
@@ -19,6 +20,7 @@ app.use(bodyParser.json());
 
 // Routes
 app.use('/music', trackRoutes);
+app.use('/movie', movieRoutes);
 
 // Database and Server connection
 mongoose
