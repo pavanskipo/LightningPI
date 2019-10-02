@@ -1,5 +1,5 @@
 const express = require('express');
-const upload = require('../utils/store_track');
+const upload = require('../utils/music/store_track');
 
 const trackController = require('../controllers/track');
 const router = express.Router();

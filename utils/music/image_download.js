@@ -1,7 +1,7 @@
 const fs = require('fs');
 const request = require('request');
 const path = require('path');
-const current_path = require('../utils/path');
+const current_path = require('../path');
 
 module.exports = download = (uri, filename, existingFile) => {
     if(existingFile){

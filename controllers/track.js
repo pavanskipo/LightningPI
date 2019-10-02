@@ -1,7 +1,6 @@
 const Track = require('../models/track');
-const current_path = require('../utils/path');
 
-const image_upload = require('../utils/image_download');
+const image_upload = require('../utils/music/image_download');
 const path = require('path');
 
 exports.getPlayTrack = async (req, res, next) => {
