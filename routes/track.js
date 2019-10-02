@@ -9,6 +9,6 @@ router.post('/update', trackController.postEditTrack);
 router.get('/fetch_tracks', trackController.getTracks);
 router.get('/fetch_track_details', trackController.getTrackDetails);
 router.get('/play_track', trackController.getPlayTrack);
-router.get('/delete_track', )
+router.get('/delete_track', trackController.postDeleteTrack)
 
 module.exports = router;

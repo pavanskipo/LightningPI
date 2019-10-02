@@ -58,13 +58,17 @@ exports.getTrackDetails = async (req, res, next) => {
 
 exports.getTracks = async (req, res, next) => {
     const tag = req.query.tag;
+    const searchPhrase = req.query.search_key;
     let responseJson = {
         status: 0,
         result: []
     };
-    let searchKey = null;
-    if(tag){
+    let searchKey = {};
+    if(tag) {
         searchKey = {track_tags: tag}
+    }
+    else if(searchPhrase) {
+        searchKey = {$text: { $search : searchPhrase}}
     }
     await Track.find(searchKey)
             .then(tracks => {
@@ -148,6 +152,24 @@ exports.postEditTrack = async (req, res, next) => {
         console.log(err);
         responseJson.result = 'Error while updating Track';
         res.json(responseJson);
-    })
+    });
+}
 
+exports.postDeleteTrack = async (req, res, next) => {
+    const trackId = req.query.productId;
+    let responseJson = {
+        status: 0,
+        result: []
+    };
+    Track.findByIdAndRemove(trackId)
+    .then(() => {
+        responseJson.status = 1;
+        responseJson.result = 'Track has been deleted!';
+        res.json(responseJson);
+    })
+    .catch(err => {
+        console.log(err);
+        responseJson.result = 'Error while deleting Track';
+        res.json(responseJson);
+    });
 }

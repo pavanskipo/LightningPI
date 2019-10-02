@@ -36,15 +36,15 @@ mongoose
     });
 
 
-    // const Product = require('./models/track');
+    const Product = require('./models/track');
 
-    // let p = new Product({
-    //     _id: '123456',
-    //     track_name: 'track_dummy',
-    //     track_image: '../../dummy',
-    //     track_location: '../../dummy',
-    //     track_description: 'blah blah blah',
-    //     track_tags: ['pop', 'rock', 'e;ectric'],
-    // })
+    let p = new Product({
+        _id: '123456',
+        track_name: 'track_dummy',
+        track_image: '../../dummy',
+        track_location: '../../dummy',
+        track_description: 'blah blah blah',
+        track_tags: ['pop', 'rock', 'e;ectric'],
+    })
 
-    // p.save();
+    p.save();

@@ -33,4 +33,11 @@ const trackSchema = new Schema({
 
 });
 
+trackSchema.index({ 
+    track_name: 'text', 
+    track_description: 'text', 
+    track_tags: 'text'
+});
+
+
 module.exports = mongoose.model('Track', trackSchema)
