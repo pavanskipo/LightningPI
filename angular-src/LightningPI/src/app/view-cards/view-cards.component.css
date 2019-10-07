@@ -1,0 +1,92 @@
+
+
+/* Dashboard part ----------------- */
+
+#continueWatching {
+    padding: 0px !important;
+    margin: 3rem auto;
+    height: 350px;
+}
+
+#continueWatching .row .col-lg-2 {
+    margin-bottom: 15px;
+}
+
+.cwImage img {
+    height: 100%;
+    width: 100%; 
+    transition: transform .2s;
+}
+
+.cwImage:hover img{
+    transform: scale(1.5);
+}
+
+.cwImage:hover .cwImagePlayer{
+    display: block;
+}
+
+.cwSubComponent {
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.cwSubComponent .cwImage {
+    height: 240px;
+}
+
+.cwImage .cwImagePlayer {
+    position: absolute;
+    top: 0;
+    left:0;
+    bottom:0;
+    right:0;
+    padding:15px;
+    display: none;
+}
+
+
+
+.cwImage .cwImagePlayer div {
+    top: 7rem;
+    left: 5.2rem;
+    position: absolute;
+}
+
+.cwSubComponent .cwDescription {
+    height: 60px;
+    background: rgba(69,69,69,0.8);
+}
+
+.cwDescription .container {
+    padding: 7px;
+}
+
+.cwDescription .movieTitle {
+    
+    font-weight: 600;
+}
+
+.cwDescription .infoIcon {
+    padding: 10px 12px 10px 10px;
+    position: sticky;
+    cursor: pointer;
+}
+
+.cwDescription .cwDescriptionContainer {
+    display: flex;
+}
+
+.cwDescription .infoIcon fa i {
+    color: #FFF275;
+}
+
+.cwImage .cwImagePlayer fa i {
+    color:rgba(243, 232, 115, 0.8);
+    text-shadow: 0 0 3px;
+}
+
+.movieTitle {
+    color: #ffffff;
+}

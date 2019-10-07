@@ -1,0 +1,39 @@
+ /* Navbar styles */
+ #main-navbar {
+    background-color: #070600 !important;
+}
+
+.navbar-brand sub {
+    color: #FFF275;
+}
+
+#addTrackButton {
+    border-color: #FFF275;
+}
+
+/* Search input and button in Nav bar */
+
+.navbar-search input, .navbar-search input:focus{
+   color: #FFF275;
+   background: black;
+   border-color: #FFF275;
+   border-radius: 1em 0em 0em 1em;
+}
+
+.navbar-search button {
+   border-radius: 0em 1em 1em 0em;
+   height: calc(1.5em + .75rem + 2px);
+}
+
+.navbar-search .btn-navbar-search-outline {
+   margin-left: -9px;
+   background: #FFF275;
+   color: black;
+   border-color: #FFF275;
+}
+
+.navbar-search .btn-navbar-search-outline:hover {
+   color: #070600;
+   border-color: #FFF275;
+   background: #FFF275;
+}
