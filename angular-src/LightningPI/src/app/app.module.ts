@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { ViewCardsComponent } from './view-cards/view-cards.component';
 import { MusicPlayerComponent } from './music-player/music-player.component';
+import { VideoPlayerComponent } from './video-player/video-player.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { MusicPlayerComponent } from './music-player/music-player.component';
     NavigationBarComponent,
     ViewCardsComponent,
     MusicPlayerComponent,
+    VideoPlayerComponent,
   ],
   imports: [
     BrowserModule,

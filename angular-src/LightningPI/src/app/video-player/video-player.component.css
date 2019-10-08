@@ -1,0 +1,9 @@
+.container-video {
+    margin-bottom: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.container-video div {
+    width: 27em;
+}
