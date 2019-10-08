@@ -1,7 +1,10 @@
 
     <!-- Navbar part begin -->
     <nav id="main-navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Lightning PI <sub>( music )</sub></a>
+      <a class="navbar-brand" href="#" (click)="changeSwitchType()">Lightning PI 
+        <sub class="music" *ngIf="switchType === 'music'">( music )</sub>
+        <sub class="movie" *ngIf="switchType === 'movie'">( movie )</sub>
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -10,15 +13,24 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto" style="padding-left: 20px">
               <li class="nav-item active">
-                  <a class="nav-link btn btn-outline-warning" style="width: 95px" id="addTrackButton" href="#">Add Track</a>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                  <a  *ngIf="switchType === 'music'"
+                      class="nav-link btn btn-outline-warning" style="width: 96px" id="addTrackButton" href="Javascript:void(0)">
+                    Add Track</a>
+                  <a  *ngIf="switchType === 'movie'"
+                      class="nav-link btn btn-outline-info" style="width: 96px" id="addMovieButton" href="Javascript:void(0)">
+                    Add Movie</a>
+                  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                     Launch demo modal
-                  </button>
+                  </button> -->
               </li>
           </ul>
           <form class="form-inline my-2 my-lg-0 navbar-search" style="padding-left: 16px;">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-navbar-search-outline my-2 my-sm-0" type="submit">
+              <input  class="form-control mr-sm-2"
+                      [ngClass]="{'music':'musicInput','movie':'movieInput'}[switchType]"
+                      type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-navbar-search-outline my-2 my-sm-0" 
+                      [ngClass]="{'music':'musicBtnOutline','movie':'movieBtnOutline'}[switchType]"
+                      type="submit">
                   <i class="fa fa-search" aria-hidden="true"></i>
               </button>
           </form>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonSwitchService } from '../services/common-switch.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationBarComponent implements OnInit {
 
-  constructor() { }
+  private switchType: string = 'music';
+
+  constructor(private _commonSwitch: CommonSwitchService) { }
 
   ngOnInit() {
+    this._commonSwitch.switchTypeUpdated.subscribe(
+      (type) => {
+        this.switchType = this._commonSwitch.getSwitchType();
+      }
+    );
+  }
+
+  changeSwitchType(){
+    let switchedType = (this.switchType === 'music')?'movie':'music';
+    this._commonSwitch.setSwitchType(switchedType);
   }
 
 }

@@ -3,37 +3,62 @@
     background-color: #070600 !important;
 }
 
-.navbar-brand sub {
+.navbar-brand .music {
     color: #FFF275;
 }
 
-#addTrackButton {
-    border-color: #FFF275;
+.navbar-brand .movie {
+   color: #39FF14;
 }
+
+#addTrackButton {
+   border-color: #FFF275;
+}
+
+#addMovieButton {
+   border-color: #39FF14;  
+}
+
+#addMovieButton:hover {
+   background-color: #39FF14;  
+}
+
 
 /* Search input and button in Nav bar */
 
 .navbar-search input, .navbar-search input:focus{
-   color: #FFF275;
    background: black;
-   border-color: #FFF275;
    border-radius: 1em 0em 0em 1em;
 }
+
+.musicInput {
+   color: #FFF275;
+   border-color: #FFF275;
+}
+
+.movieInput {
+   color: #39FF14;
+   border-color: #39FF14;
+}
+
 
 .navbar-search button {
    border-radius: 0em 1em 1em 0em;
    height: calc(1.5em + .75rem + 2px);
 }
 
-.navbar-search .btn-navbar-search-outline {
+.navbar-search .btn-navbar-search-outline, .navbar-search .btn-navbar-search-outline:hover  {
    margin-left: -9px;
+   color: #070600;
+}
+
+.musicBtnOutline {
    background: #FFF275;
-   color: black;
    border-color: #FFF275;
 }
 
-.navbar-search .btn-navbar-search-outline:hover {
-   color: #070600;
-   border-color: #FFF275;
-   background: #FFF275;
+.movieBtnOutline {
+   background: #39FF14;
+   border-color: #39FF14;
 }
+
