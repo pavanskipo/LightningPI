@@ -10,6 +10,8 @@ import { ViewCardsComponent } from './view-cards/view-cards.component';
 import { MusicPlayerComponent } from './music-player/music-player.component';
 import { VideoPlayerComponent } from './video-player/video-player.component';
 import { CommonSwitchService } from './services/common-switch.service';
+import { CommonHttpService } from './services/common-http.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,10 @@ import { CommonSwitchService } from './services/common-switch.service';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AngularFontAwesomeModule
   ],
-  providers: [CommonSwitchService],
+  providers: [CommonSwitchService, CommonHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
