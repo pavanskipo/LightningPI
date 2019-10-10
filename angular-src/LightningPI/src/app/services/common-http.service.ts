@@ -8,7 +8,7 @@ import { map, catchError, tap } from 'rxjs/operators';
 })
 export class CommonHttpService {
 
-  private endpoint = 'http://192.168.0.10:8000/api/';
+  private endpoint = 'http://192.168.0.8:8000/api/';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json'
@@ -17,13 +17,24 @@ export class CommonHttpService {
 
   constructor(private http: HttpClient) { }
 
+  public getBaseUrl(){
+    return this.endpoint.replace('api/', '');
+  }
+
   private extractData(res: Response) {
     let body = res;
     return body || { };
   }
 
   getTracksJson(url, queryParamsObject): Observable<any> {
-    return this.http.get(this.endpoint + url).pipe(
+    let query = '';
+    if(queryParamsObject) {
+      for(let queryData in queryParamsObject) {
+        query += ('&' + queryData + '=' + queryParamsObject[queryData])
+      }
+      query = '?' + query.substr(1);
+    }
+    return this.http.get(this.endpoint + url + query).pipe(
       map(this.extractData));
   }
 

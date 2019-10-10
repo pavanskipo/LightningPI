@@ -70,6 +70,7 @@ exports.getMovies = async (req, res, next) => {
         searchKey = {$text: { $search : searchPhrase}}
     }
     await Movie.find(searchKey)
+            .sort({created_at: -1})
             .then(movies => {
                 responseJson.status = 1;
                 movies.forEach(data => {

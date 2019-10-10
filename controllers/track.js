@@ -56,20 +56,17 @@ exports.getTrackDetails = async (req, res, next) => {
 }
 
 exports.getTracks = async (req, res, next) => {
-    const tag = req.query.tag;
     const searchPhrase = req.query.search_phrase;
     let responseJson = {
         status: 0,
         result: []
     };
     let searchKey = {};
-    if(tag) {
-        searchKey = {track_tags: tag}
-    }
-    else if(searchPhrase) {
+    if(searchPhrase) {
         searchKey = {$text: { $search : searchPhrase}}
     }
     await Track.find(searchKey)
+            .sort({created_at: -1})
             .then(tracks => {
                 responseJson.status = 1;
                 tracks.forEach(data => {

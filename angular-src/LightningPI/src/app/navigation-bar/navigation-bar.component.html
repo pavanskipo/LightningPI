@@ -26,10 +26,13 @@
           </ul>
           <form class="form-inline my-2 my-lg-0 navbar-search" style="padding-left: 16px;">
               <input  class="form-control mr-sm-2"
+                      [(ngModel)]="searchKey"
+                      name="searchKey"
                       [ngClass]="{'music':'musicInput','movie':'movieInput'}[switchType]"
                       type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-navbar-search-outline my-2 my-sm-0" 
                       [ngClass]="{'music':'musicBtnOutline','movie':'movieBtnOutline'}[switchType]"
+                      (click)="setSearchKey()"
                       type="submit">
                   <i class="fa fa-search" aria-hidden="true"></i>
               </button>

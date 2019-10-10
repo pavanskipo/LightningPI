@@ -12,6 +12,7 @@ import { VideoPlayerComponent } from './video-player/video-player.component';
 import { CommonSwitchService } from './services/common-switch.service';
 import { CommonHttpService } from './services/common-http.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     AngularFontAwesomeModule
   ],

@@ -29,6 +29,7 @@
 .navbar-search input, .navbar-search input:focus{
    background: black;
    border-radius: 1em 0em 0em 1em;
+   width: 250px;
 }
 
 .musicInput {

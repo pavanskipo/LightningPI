@@ -18,14 +18,15 @@
    <!-- Dashboard part begin -->
    <div class="container" id="continueWatching">
       <div class="row">
-          <div class="col-lg-2">
-              <div class="cwSubComponent">
+          <div class="col-lg-2" *ngFor="let data of cardsData">
+              <div  class="cwSubComponent" 
+                    [ngClass]="{'music':'cwSubComponentMusic','movie':'cwSubComponentMovie'}[switchType]">
                   <div class="cwImage">
-                      <img src="https://images.unsplash.com/photo-1560713796-952b738c598b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=282&q=80"
+                      <img [src]="baseUrl + data[mappingObject[switchType].image]"
                           alt="">
                       <div class="cwImagePlayer">
                           <div>
-                              <fa name="play-circle" size="3x" inverse="true"></fa>
+                              <fa (click)="playTrack()" name="play-circle" size="3x" inverse="true"></fa>
                           </div>
                       </div>
                   </div>
@@ -34,64 +35,12 @@
                           <div class="row">
                               <div class="col-sm-12 cwDescriptionContainer">
                                   <div class="infoIcon">
-                                      <fa name="info-circle" size="lg" inverse="true"></fa>
+                                      <fa (click)="fetchDetails(data[mappingObject[switchType].id])" 
+                                            data-toggle="modal" data-target="#showDetailsModel"
+                                            name="info-circle" size="lg" inverse="true"></fa>
                                   </div>
                                   <span class="movieTitle">
-                                      Tron Legacy and the mop
-                                  </span>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-lg-2">
-              <div class="cwSubComponent">
-                  <div class="cwImage">
-                      <img src="https://images.unsplash.com/photo-1560713796-952b738c598b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=282&q=80"
-                          alt="">
-                      <div class="cwImagePlayer">
-                          <div>
-                              <fa name="play-circle" size="3x" inverse="true"></fa>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="cwDescription">
-                      <div class="container">
-                          <div class="row">
-                              <div class="col-sm-12 cwDescriptionContainer">
-                                  <div class="infoIcon">
-                                      <fa name="info-circle" size="lg" inverse="true"></fa>
-                                  </div>
-                                  <span class="movieTitle">
-                                      Tron Legacy and the mop
-                                  </span>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-lg-2">
-              <div class="cwSubComponent">
-                  <div class="cwImage">
-                      <img src="https://images.unsplash.com/photo-1560713796-952b738c598b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=282&q=80"
-                          alt="">
-                      <div class="cwImagePlayer">
-                          <div>
-                              <fa name="play-circle" size="3x" inverse="true"></fa>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="cwDescription">
-                      <div class="container">
-                          <div class="row">
-                              <div class="col-sm-12 cwDescriptionContainer">
-                                  <div class="infoIcon">
-                                      <fa name="info-circle" size="lg" inverse="true"></fa>
-                                  </div>
-                                  <span class="movieTitle">
-                                      Tron Legacy and the mop
+                                      {{data[mappingObject[switchType].name]}}
                                   </span>
                               </div>
                           </div>
@@ -102,3 +51,34 @@
       </div>
   </div>
   <!-- Dashboard Part End -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="showDetailsModel" tabindex="-1" role="dialog" aria-labelledby="showDetailsModel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalTitle">{{detailsObject[mappingObject[switchType].name] | uppercase}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-4">
+                        <img [src]="baseUrl + detailsObject[mappingObject[switchType].image]"
+                            alt=""
+                            style="height: 150px; width:125px; box-shadow: 5px 5px rgba(0,0,0,0.5)">
+                  </div>
+                  <div class="col-lg-8">
+                      <p>{{detailsObject[mappingObject[switchType].desc]}}</p><br>
+                      <strong>Tags&nbsp;:&nbsp;</strong>{{detailsObject[mappingObject[switchType].tags].toString()}}<br>
+                      <strong>Created at&nbsp;:&nbsp;</strong>{{detailsObject[mappingObject[switchType].created_at].type | date:'medium'}}<br>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Model End -->

@@ -9,6 +9,7 @@ import { CommonSwitchService } from '../services/common-switch.service';
 export class NavigationBarComponent implements OnInit {
 
   private switchType: string = 'music';
+  private searchKey: string = '';
 
   constructor(private _commonSwitch: CommonSwitchService) { }
 
@@ -23,6 +24,10 @@ export class NavigationBarComponent implements OnInit {
   changeSwitchType(){
     let switchedType = (this.switchType === 'music')?'movie':'music';
     this._commonSwitch.setSwitchType(switchedType);
+  }
+
+  setSearchKey(){
+    this._commonSwitch.setSearchKey(this.searchKey);
   }
 
 }
