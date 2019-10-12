@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonSwitchService } from '../services/common-switch.service';
+import { CommonHttpService } from '../services/common-http.service';
 
 @Component({
   selector: 'app-music-player',
@@ -7,10 +9,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MusicPlayerComponent implements OnInit {
 
-
-  constructor() { }
+  private sourceId: string = '';
+  public trackData = {};
+  
+  constructor(private _commonSwitch: CommonSwitchService,
+              private _commonHttp: CommonHttpService) { }
 
   ngOnInit() {
+    this.sourceId = this._commonSwitch.getSourceId();
+    this.fetchData(this.sourceId);
+    this._commonSwitch.sourceUpdated.subscribe(
+      (Id) => {
+        this.sourceId = this._commonSwitch.getSourceId();
+        this.fetchData(this.sourceId);
+      }
+    );
   }
+
+  fetchData(sourceId) {
+    if(sourceId !== '') {
+      let apiUrl = 'music/play_track';
+      let query = {};
+      query['track_id'] = sourceId;
+      this._commonHttp.getJson(apiUrl, query).subscribe((data) => {
+        if(data.status === 1){
+          this.trackData = data.result;
+        }
+      });
+    }
+  }
+
 
 }

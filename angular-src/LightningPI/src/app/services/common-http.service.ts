@@ -26,7 +26,7 @@ export class CommonHttpService {
     return body || { };
   }
 
-  getTracksJson(url, queryParamsObject): Observable<any> {
+  getJson(url, queryParamsObject): Observable<any> {
     let query = '';
     if(queryParamsObject) {
       for(let queryData in queryParamsObject) {
@@ -38,4 +38,8 @@ export class CommonHttpService {
       map(this.extractData));
   }
 
+  postJson(url, bodyObject): Observable<any> {
+    return this.http.post(this.endpoint + url, bodyObject).pipe(
+      map(this.extractData));
+  }
 }

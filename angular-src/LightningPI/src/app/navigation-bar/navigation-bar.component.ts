@@ -14,6 +14,7 @@ export class NavigationBarComponent implements OnInit {
   constructor(private _commonSwitch: CommonSwitchService) { }
 
   ngOnInit() {
+    this.switchType = this._commonSwitch.getSwitchType();
     this._commonSwitch.switchTypeUpdated.subscribe(
       (type) => {
         this.switchType = this._commonSwitch.getSwitchType();

@@ -154,7 +154,7 @@ exports.postEditTrack = async (req, res, next) => {
 }
 
 exports.postDeleteTrack = async (req, res, next) => {
-    const trackId = req.query.productId;
+    const trackId = req.body.track_id;
     let responseJson = {
         status: 0,
         result: []

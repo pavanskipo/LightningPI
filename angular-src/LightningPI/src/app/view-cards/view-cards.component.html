@@ -26,7 +26,7 @@
                           alt="">
                       <div class="cwImagePlayer">
                           <div>
-                              <fa (click)="playTrack()" name="play-circle" size="3x" inverse="true"></fa>
+                              <fa (click)="playMedia(data[mappingObject[switchType].id])" name="play-circle" size="3x" inverse="true"></fa>
                           </div>
                       </div>
                   </div>
@@ -74,6 +74,12 @@
                       <p>{{detailsObject[mappingObject[switchType].desc]}}</p><br>
                       <strong>Tags&nbsp;:&nbsp;</strong>{{detailsObject[mappingObject[switchType].tags].toString()}}<br>
                       <strong>Created at&nbsp;:&nbsp;</strong>{{detailsObject[mappingObject[switchType].created_at].type | date:'medium'}}<br>
+                      <div style="padding-top: 10px">
+                        <button 
+                        data-toggle="modal" data-target="#showDetailsModel"
+                        (click)="deleteMedia(detailsObject[mappingObject[switchType].id], detailsObject[mappingObject[switchType].name])"
+                        type="button" class="btn btn-outline-danger btn-block">Delete</button>
+                      </div>
                   </div>
               </div>
           </div>

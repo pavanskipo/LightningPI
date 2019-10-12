@@ -158,7 +158,7 @@ exports.postEditMovie = async (req, res, next) => {
 }
 
 exports.postDeleteMovie = async (req, res, next) => {
-    const movieId = req.query.productId;
+    const movieId = req.body.track_id;
     let responseJson = {
         status: 0,
         result: []

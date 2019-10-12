@@ -21,6 +21,9 @@ export class CommonSwitchService {
   public searchKeyUpdated = new EventEmitter();
   private searchKey: string = '';
 
+  public sourceUpdated = new EventEmitter();
+  private sourceId: string = '';
+
   public setSwitchType(type) {
     this.switchType = type;
     localStorage.setItem('switchType', type);
@@ -39,6 +42,14 @@ export class CommonSwitchService {
   public getSearchKey() {
     return this.searchKey;
   }
-  
 
+  public setSourceId(Id) {
+    this.sourceId = Id;
+    this.sourceUpdated.emit(this.sourceId);
+  }
+
+  public getSourceId() {
+    return this.sourceId;
+  }
+  
 }

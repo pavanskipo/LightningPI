@@ -13,6 +13,9 @@ import { CommonSwitchService } from './services/common-switch.service';
 import { CommonHttpService } from './services/common-http.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,14 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    })
   ],
   providers: [CommonSwitchService, CommonHttpService],
   bootstrap: [AppComponent]
