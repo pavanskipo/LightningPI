@@ -1,10 +1,11 @@
 
     <!-- Navbar part begin -->
     <nav id="main-navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#" (click)="changeSwitchType()">Lightning PI 
-        <sub class="music" *ngIf="switchType === 'music'">( music )</sub>
-        <sub class="movie" *ngIf="switchType === 'movie'">( movie )</sub>
-      </a>
+      <a  class="navbar-brand" href="JavaScript:Void(0)" 
+          (click)="navigateToRoute('dashboard')"
+          style="margin-right: 5px">Lightning PI</a>          
+        <span class="music-switch" (click)="changeSwitchType()" *ngIf="switchType === 'music'">( music )</span>
+        <span class="movie-switch" (click)="changeSwitchType()" *ngIf="switchType === 'movie'">( movie )</span>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -14,9 +15,11 @@
           <ul class="navbar-nav mr-auto" style="padding-left: 20px">
               <li class="nav-item active">
                   <a  *ngIf="switchType === 'music'"
+                      (click)="navigateToRoute('music')"
                       class="nav-link btn btn-outline-warning" style="width: 96px" id="addTrackButton" href="Javascript:void(0)">
                     Add Track</a>
                   <a  *ngIf="switchType === 'movie'"
+                      (click)="navigateToRoute('movie')"
                       class="nav-link btn btn-outline-info" style="width: 96px" id="addMovieButton" href="Javascript:void(0)">
                     Add Movie</a>
                   <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">

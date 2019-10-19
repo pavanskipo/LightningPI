@@ -53,7 +53,9 @@
   <!-- Dashboard Part End -->
 
   <!-- Modal -->
-  <div class="modal fade" id="showDetailsModel" tabindex="-1" role="dialog" aria-labelledby="showDetailsModel" aria-hidden="true">
+  <div  class="modal fade" id="showDetailsModel" tabindex="-1" role="dialog"
+        *ngIf = "(detailsObject | json) != '{}'"
+        aria-labelledby="showDetailsModel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">

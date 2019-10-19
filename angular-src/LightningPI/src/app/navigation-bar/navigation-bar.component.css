@@ -3,12 +3,14 @@
     background-color: #070600 !important;
 }
 
-.navbar-brand .music {
+.music-switch {
     color: #FFF275;
+    cursor: pointer;
 }
 
-.navbar-brand .movie {
+.movie-switch {
    color: #39FF14;
+   cursor: pointer;
 }
 
 #addTrackButton {

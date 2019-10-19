@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonSwitchService } from '../services/common-switch.service';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -11,7 +12,8 @@ export class NavigationBarComponent implements OnInit {
   private switchType: string = 'music';
   private searchKey: string = '';
 
-  constructor(private _commonSwitch: CommonSwitchService) { }
+  constructor(private _commonSwitch: CommonSwitchService,
+              private router: Router) { }
 
   ngOnInit() {
     this.switchType = this._commonSwitch.getSwitchType();
@@ -31,4 +33,12 @@ export class NavigationBarComponent implements OnInit {
     this._commonSwitch.setSearchKey(this.searchKey);
   }
 
+  navigateToRoute(type){
+    let route = {
+      'music': 'addMusic',
+      'movie': 'addMovie',
+      'dashboard': 'dashboard'
+    }
+    this.router.navigate([route[type]]);
+  }
 }

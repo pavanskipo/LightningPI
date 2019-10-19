@@ -19,15 +19,7 @@ export class ViewCardsComponent implements OnInit {
   public cardsData = [];
   private switchType = '';
   private searchKey = '';
-  public detailsObject = {
-    created_at: {type: "2019-10-09T07:25:42.237Z"},
-    track_description: "",
-    track_id: "",
-    track_image: "",
-    track_location: "",
-    track_name: "",
-    track_tags: []
-  };
+  public detailsObject = {};
 
   // private popularMusicTags = []
   // private popularMovieTags = []
@@ -73,6 +65,7 @@ export class ViewCardsComponent implements OnInit {
         this.fetchData();
       }
     );
+  console.log(Object.entries(this.detailsObject).length)
   }
 
   fetchData(searchQuery?) {
@@ -97,6 +90,8 @@ export class ViewCardsComponent implements OnInit {
     this._commonHttp.getJson(apiUrl, query).subscribe((data) => {
       if(data.status === 1){
         this.detailsObject = data.result;
+      } else {
+        this.detailsObject = {};
       }
     });
   }

@@ -38,8 +38,13 @@ export class CommonHttpService {
       map(this.extractData));
   }
 
+  getSuggestionsJson(url) {
+    return this.http.jsonp(url, 'callback')
+  }
+
   postJson(url, bodyObject): Observable<any> {
     return this.http.post(this.endpoint + url, bodyObject).pipe(
       map(this.extractData));
   }
+
 }
