@@ -13,6 +13,8 @@ export class VideoPlayerComponent implements OnInit {
   public player; 
   private sourceId: string = '';
   public movieData = {};
+  public baseUrl;
+  public movieSource = '';
 
   constructor(private _commonSwitch: CommonSwitchService,
               private _commonHttp: CommonHttpService) { }
@@ -27,16 +29,19 @@ export class VideoPlayerComponent implements OnInit {
         this.fetchData(this.sourceId);
       }
     );
+    this.baseUrl = this._commonHttp.getBaseUrl();
   }
 
   fetchData(sourceId) {
     if(sourceId !== '') {
       let apiUrl = 'movie/play_movie';
       let query = {};
-      query['track_id'] = sourceId;
+      query['movie_id'] = sourceId;
       this._commonHttp.getJson(apiUrl, query).subscribe((data) => {
         if(data.status === 1){
           this.movieData = data.result;
+          this.movieSource = this.baseUrl + this.movieData['movie_location'] || '';
+
         }
       });
     }

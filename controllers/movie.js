@@ -2,6 +2,8 @@ const Movie = require('../models/movie');
 
 const image_upload = require('../utils/movie/image_download');
 const path = require('path');
+const fs = require('fs');
+const current_path = require('../utils/path');
 
 exports.getPlayMovie = async (req, res, next) => {
     const movieId = req.query.movie_id;
@@ -98,7 +100,7 @@ exports.postUploadMovie = async (req, res, next) => {
         _id: req.body.movie_id,
         movie_name: req.body.movie_name,
         movie_image: 'movie_images/' + fileName + '.jpg',
-        movie_location: 'movies' + fileName + '.mp4',
+        movie_location: 'movies/' + fileName + '.mp4',
         movie_plot: req.body.movie_plot,
         movie_tags: req.body.movie_tags.split(',').map(item => item.trim()),
     }
@@ -158,13 +160,16 @@ exports.postEditMovie = async (req, res, next) => {
 }
 
 exports.postDeleteMovie = async (req, res, next) => {
-    const movieId = req.body.track_id;
+    const movieId = req.body.movie_id;
     let responseJson = {
         status: 0,
         result: []
     };
-    Movie.findByIdAndRemove(movieId)
-    .then(() => {
+    Movie.findById(movieId)
+    .then((movie) => {
+        fs.unlinkSync(path.resolve(current_path, 'public', movie['movie_image']));
+        fs.unlinkSync(path.resolve(current_path, 'public', movie['movie_location']));
+        movie.remove();
         responseJson.status = 1;
         responseJson.result = 'Movie has been deleted!';
         res.json(responseJson);

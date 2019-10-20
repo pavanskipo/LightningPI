@@ -1,3 +1,109 @@
-<p>
-  add-movie works!
-</p>
+<div class="container" style="padding-top: 5em;margin-bottom: 15em;">
+    <form>
+        <div class="form-row">
+            <div class="col-md-4">
+              <input 
+                type="text" 
+                [(ngModel)]="searchAPI"
+                [ngModelOptions]="{standalone: true}"
+                class="form-control" 
+                id="searchMovieAPI" 
+                placeholder="Search Movie Online" 
+                value="">
+            </div>    
+            <div class="col-md-4">
+              <button class="btn btn-primary" type="submit" (click)="searchMovieDB()">Search</button>
+            </div>
+        </div>
+  
+        <div class="list-group list-movie-suggestions" >
+          <button 
+            type="button" 
+            *ngFor="let data of movieSuggestions; index as i" 
+            (dblclick)="autoFillForm(i)"
+            class="list-group-item list-group-item-action">
+            <img src="{{data['Poster']}}" alt="Smiley face" height="42" width="42">
+              {{data['Title']}} <strong>|</strong> {{data['Type']}} <strong>|</strong> {{data['Year']}}
+          </button>
+        </div>
+    </form>
+    
+    <hr style="background: #ffffff;">
+    <form [formGroup]="movieForm">
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="movie_name">Movie Name</label>
+          <input 
+          type="text" 
+          class="form-control" 
+          id="movie_name" 
+          formControlName="movie_name"
+          placeholder="Enter Movie Name">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="movie_image">Movie Image</label>
+          <input 
+          type="text" 
+          class="form-control" 
+          id="movie_image" 
+          formControlName="movie_image"
+          placeholder="Enter Movie Image">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="movie_tags">Movie Tags</label>
+          <input 
+          type="text" 
+          class="form-control" 
+          id="movie_tags" 
+          formControlName="movie_tags"
+          placeholder="Enter Movie Tags">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="movie_file">Movie File</label>
+        <input type="file"
+          (change)="uploadFile($event)" 
+          style="color: #ffffff;"
+          class="form-control-file" 
+          id="movie_file">
+      </div>
+       <!-- Progress Bar -->
+       <div class="progress form-group" *ngIf="progress > 0">
+          <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width.%]="progress">
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="movie_plot">Movie Description</label>
+        <textarea 
+          class="form-control" 
+          placeholder="Enter Movie Description"
+          formControlName="movie_plot"
+          id="movie_plot" rows="3"></textarea>
+      </div>
+      <div class="form-row">
+        <div class="col-md">
+          <div class="row">
+            <div class="col" style="text-align: center;">
+              <button 
+                  class="btn btn-danger" 
+                  style="width: 100%;" 
+                  (click)="resetForm()"
+                  type="button">Reset</button>
+            </div>
+            <div class="col" style="text-align: center;">
+              <button 
+                class="btn btn-primary" 
+                style="width: 100%;" 
+                (click)="submitForm()"
+                [disabled]="movieForm.invalid"
+                type="submit">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>

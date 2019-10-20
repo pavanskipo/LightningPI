@@ -11,15 +11,13 @@ export class MusicPlayerComponent implements OnInit {
 
   private sourceId: string = '';
   public trackData = {};
-  
   public baseUrl;
-  public audioSource = 'http://192.168.0.7:8000/music/1323774092_Hello!.mp3';
+  public audioSource = '';
 
   constructor(private _commonSwitch: CommonSwitchService,
               private _commonHttp: CommonHttpService) { }
 
   ngOnInit() {
-    console.log("2222---")
     this.sourceId = this._commonSwitch.getSourceId();
     this.fetchData(this.sourceId);
     this._commonSwitch.sourceUpdated.subscribe(

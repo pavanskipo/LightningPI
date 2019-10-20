@@ -7,3 +7,7 @@
 .container-video div {
     width: 27em;
 }
+
+video {
+    max-height: 135px;
+}

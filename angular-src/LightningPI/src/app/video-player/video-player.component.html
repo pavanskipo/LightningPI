@@ -2,9 +2,8 @@
 
 <div class="container-video fixed-bottom" *ngIf="sourceId !== ''">
   <div>
-    <video id='plyrID' controls crossorigin playsinline>
-        <source src="{{movieData.movie_location}}" type="video/mp4" size="1080">
-        <a href="{{movieData.movie_location}}" download>Download</a>
+    <video id='plyrID' controls crossorigin playsinline src="{{movieSource}}">
+        <a href="{{movieSource}}" download>Download</a>
     </video>
   </div>
 </div>

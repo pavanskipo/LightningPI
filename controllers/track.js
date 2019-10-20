@@ -2,6 +2,8 @@ const Track = require('../models/track');
 
 const image_upload = require('../utils/music/image_download');
 const path = require('path');
+const fs = require('fs');
+const current_path = require('../utils/path');
 
 exports.getPlayTrack = async (req, res, next) => {
     const trackId = req.query.track_id;
@@ -159,8 +161,11 @@ exports.postDeleteTrack = async (req, res, next) => {
         status: 0,
         result: []
     };
-    Track.findByIdAndRemove(trackId)
-    .then(() => {
+    Track.findById(trackId)
+    .then((track) => {
+        fs.unlinkSync(path.resolve(current_path, 'public', track['track_image']));
+        fs.unlinkSync(path.resolve(current_path, 'public', track['track_location']));
+        track.remove();
         responseJson.status = 1;
         responseJson.result = 'Track has been deleted!';
         res.json(responseJson);

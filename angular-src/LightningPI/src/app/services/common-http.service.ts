@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -57,7 +57,24 @@ export class CommonHttpService {
     for(let data in bodyObject) {
       formData.set(data, bodyObject[data])
     }
-    return this.http.post(this.endpoint + url, formData).pipe(
-      map(this.extractData));
+    return this.http.post(this.endpoint + url, formData, {
+      reportProgress: true,
+      observe: 'events'
+    }).pipe(
+      map(this.extractData),
+      catchError(this.errorMgmt));
+  }
+
+  errorMgmt(error: HttpErrorResponse) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Get server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(errorMessage);
   }
 }

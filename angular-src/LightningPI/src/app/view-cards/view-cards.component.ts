@@ -65,7 +65,6 @@ export class ViewCardsComponent implements OnInit {
         this.fetchData();
       }
     );
-  console.log(Object.entries(this.detailsObject).length)
   }
 
   fetchData(searchQuery?) {
@@ -86,7 +85,7 @@ export class ViewCardsComponent implements OnInit {
   fetchDetails(searchId) {
     let apiUrl = this.urls['fetch_details'][this.switchType === 'music'?0:1];
     let query = {};
-    query['track_id'] = searchId;
+    query[this.mappingObject[this.switchType].id] = searchId;
     this._commonHttp.getJson(apiUrl, query).subscribe((data) => {
       if(data.status === 1){
         this.detailsObject = data.result;
@@ -104,7 +103,7 @@ export class ViewCardsComponent implements OnInit {
     if(confirm("Are you sure to delete "+name)) {
       let apiUrl = this.urls['remove'][this.switchType === 'music'?0:1];
       let body = {};
-      body['track_id'] = sourceId;
+      body[this.mappingObject[this.switchType].id] = sourceId;
       this._commonHttp.postJson(apiUrl, body).subscribe((data) => {
         if(data.status === 1){
           this.fetchData();
