@@ -97,8 +97,8 @@ exports.postUploadMovie = async (req, res, next) => {
     let payload = {
         _id: req.body.movie_id,
         movie_name: req.body.movie_name,
-        movie_image: path.join('movie_images', fileName + '.jpg'),
-        movie_location: path.join('movies', fileName + '.mp4'),
+        movie_image: 'movie_images/' + fileName + '.jpg',
+        movie_location: 'movies' + fileName + '.mp4',
         movie_plot: req.body.movie_plot,
         movie_tags: req.body.movie_tags.split(',').map(item => item.trim()),
     }
@@ -138,7 +138,7 @@ exports.postEditMovie = async (req, res, next) => {
                     image_upload(req.body.movie_image,
                         movie._id + '_' + req.body.movie_name,
                         movie._id + '_' + current_name + '.jpg');
-                    movie.movie_image = path.join('movie_images', movie._id + '_' + req.body.movie_name + '.jpg')
+                    movie.movie_image = 'movie_images' + movie._id + '_' + req.body.movie_name + '.jpg'
                 } else {
                     movie[changesArrayMapping[index]] = req.body[changesArrayMapping[index]]
                 }

@@ -2,9 +2,8 @@
 <div class="fixed-bottom" *ngIf="sourceId !== ''">
   <div class="container-audio">
       <div class="track-title">{{trackData.track_name}}</div>
-        <audio controls>
-                    <source src="{{trackData.track_location}}" type="audio/ogg">
-                    Your browser dose not Support the audio Tag
+        <audio controls autoplay [src]="audioSource">
+            Your browser dose not Support the audio Tag
         </audio>
     </div>
 </div>

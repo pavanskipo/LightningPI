@@ -19,6 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
 import {RouterModule, Routes} from '@angular/router';
 import { AddMusicComponent } from './music-player/add-music/add-music.component';
 import { AddMovieComponent } from './video-player/add-movie/add-movie.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -67,7 +68,8 @@ const routes: Routes = [
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
-    HttpClientJsonpModule
+    HttpClientJsonpModule,
+    ReactiveFormsModule
   ],
   providers: [CommonSwitchService, CommonHttpService],
   bootstrap: [AppComponent]

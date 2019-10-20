@@ -93,8 +93,8 @@ exports.postUploadTrack = async (req, res, next) => {
     let payload = {
         _id: req.body.track_id,
         track_name: req.body.track_name,
-        track_image: path.join('music_images', fileName + '.jpg'),
-        track_location: path.join('music', fileName + '.mp3'),
+        track_image: 'music_images/' + fileName + '.jpg',
+        track_location: 'music/' + fileName + '.mp3',
         track_description: req.body.track_description,
         track_tags: req.body.track_tags.split(',').map(item => item.trim()),
     }
@@ -134,7 +134,7 @@ exports.postEditTrack = async (req, res, next) => {
                     image_upload(req.body.track_image,
                         track._id + '_' + req.body.track_name,
                         track._id + '_' + current_name + '.jpg');
-                    track.track_image = path.join('music_images', track._id + '_' + req.body.track_name + '.jpg')
+                    track.track_image = 'music_images' + track._id + '_' + req.body.track_name + '.jpg'
                 } else {
                     track[changesArrayMapping[index]] = req.body[changesArrayMapping[index]]
                 }

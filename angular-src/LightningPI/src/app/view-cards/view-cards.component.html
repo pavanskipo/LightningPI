@@ -74,7 +74,7 @@
                   </div>
                   <div class="col-lg-8">
                       <p>{{detailsObject[mappingObject[switchType].desc]}}</p><br>
-                      <strong>Tags&nbsp;:&nbsp;</strong>{{detailsObject[mappingObject[switchType].tags].toString()}}<br>
+                      <strong>Tags&nbsp;:&nbsp;</strong>{{detailsObject[mappingObject[switchType].tags]?detailsObject[mappingObject[switchType].tags].toString():''}}<br>
                       <strong>Created at&nbsp;:&nbsp;</strong>{{detailsObject[mappingObject[switchType].created_at].type | date:'medium'}}<br>
                       <div style="padding-top: 10px">
                         <button 

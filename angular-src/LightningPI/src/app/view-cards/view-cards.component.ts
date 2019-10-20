@@ -111,6 +111,8 @@ export class ViewCardsComponent implements OnInit {
           setTimeout(() => {
             this.toastr.success('Deleted', name + ' has been deleted!');
           }, 1500);
+        } else {
+          this.toastr.success('Error', 'Error while deleting');
         }
       });
     }

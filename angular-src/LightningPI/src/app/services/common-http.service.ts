@@ -8,14 +8,19 @@ import { map, catchError, tap } from 'rxjs/operators';
 })
 export class CommonHttpService {
 
-  private endpoint = 'http://192.168.0.8:8000/api/';
+  private endpoint = 'http://192.168.0.7:8000/api/';
+  private debug = true;
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json'
     })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    if(!this.debug) {
+      this.endpoint = location.protocol + '//' + window.location.host + '/api/';
+    }
+  }
 
   public getBaseUrl(){
     return this.endpoint.replace('api/', '');
@@ -47,4 +52,12 @@ export class CommonHttpService {
       map(this.extractData));
   }
 
+  postFormData(url, bodyObject): Observable<any> {
+    const formData = new FormData();
+    for(let data in bodyObject) {
+      formData.set(data, bodyObject[data])
+    }
+    return this.http.post(this.endpoint + url, formData).pipe(
+      map(this.extractData));
+  }
 }
