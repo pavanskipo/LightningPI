@@ -37,7 +37,6 @@ export class AddMusicComponent implements OnInit {
                  this.searchAPI_uri[1];
     this._commonHttp.getSuggestionsJson(apiUrl).subscribe((data) => {
       if(data) {
-        console.log(data);
         this.trackSuggestions = data['results'];
       }
     });
