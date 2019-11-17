@@ -12,7 +12,7 @@ import { HttpEvent, HttpEventType } from '@angular/common/http';
 export class AddMovieComponent implements OnInit {
 
   public searchAPI: string = '';
-  private searchAPI_uri = ' http://www.omdbapi.com/?apikey=<secret_key>';
+  private searchAPI_uri = ' http://www.omdbapi.com/?apikey=' + this._commonHttp.secret_key;
   public movieSuggestions = [];
   public movieForm: FormGroup;
   progress: number = 0;

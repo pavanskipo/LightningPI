@@ -10,6 +10,7 @@ export class CommonHttpService {
 
   private endpoint = 'http://192.168.0.7:8000/api/';
   private debug = false;
+  public secret_key = '<secret_key>';
   
   private httpOptions = {
     headers: new HttpHeaders({
