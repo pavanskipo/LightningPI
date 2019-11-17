@@ -4,7 +4,8 @@
 
 <img src="https://github.com/pavanskipo/LightningPI/blob/master/angular-src/LightningPI/src/favicon.png" width="15%">
 
-A simple media streaming app using Node.js, MongoDB and Angular
+A simple media streaming app using Node.js, MongoDB and Angular. 
+Upload Music and Movies to your server and stream the content over multiple devices.
 
   
 
@@ -24,6 +25,7 @@ What things you need to install the software and how to install them
 
  - [Node.js and NPM](https://nodejs.org/en/download/) 
  - [MongoDB](https://www.mongodb.com/download-center)
+ - [OmDb API key](http://www.omdbapi.com/)
 
   
 
@@ -50,6 +52,7 @@ db:  '<your database name>'
  2. Open `common-http.service.ts` file and
     configure the API **endpoint** and **debug** variables ( path: 
     `angular-src/LightningPI/src/app/services/common-http.service.ts` )
- 3.   run `npm start`
+ 3.  Generate the API key for OmDb API and put it inside **secret_key** variable
+ 4.  run `npm start`
 
 Open the app in your browser and enjoy !! ( ^ _ ^ )
