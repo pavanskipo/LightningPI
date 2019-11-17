@@ -9,7 +9,7 @@ import { CommonHttpService } from '../services/common-http.service';
 })
 export class MusicPlayerComponent implements OnInit {
 
-  private sourceId: string = '';
+  public sourceId: string = '';
   public trackData = {};
   public baseUrl;
   public audioSource = '';

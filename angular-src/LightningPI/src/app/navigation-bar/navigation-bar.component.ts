@@ -9,8 +9,8 @@ import { Router} from '@angular/router';
 })
 export class NavigationBarComponent implements OnInit {
 
-  private switchType: string = 'music';
-  private searchKey: string = '';
+  public switchType: string = 'music';
+  public searchKey: string = '';
 
   constructor(private _commonSwitch: CommonSwitchService,
               private router: Router) { }

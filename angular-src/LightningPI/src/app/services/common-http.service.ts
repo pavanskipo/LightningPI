@@ -9,7 +9,8 @@ import { map, catchError, tap } from 'rxjs/operators';
 export class CommonHttpService {
 
   private endpoint = 'http://192.168.0.7:8000/api/';
-  private debug = true;
+  private debug = false;
+  
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json'

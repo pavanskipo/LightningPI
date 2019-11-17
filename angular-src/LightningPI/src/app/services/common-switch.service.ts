@@ -16,13 +16,13 @@ export class CommonSwitchService {
   }
 
   public switchTypeUpdated = new EventEmitter();
-  private switchType: string;
+  public switchType: string;
 
   public searchKeyUpdated = new EventEmitter();
-  private searchKey: string = '';
+  public searchKey: string = '';
 
   public sourceUpdated = new EventEmitter();
-  private sourceId: string = '';
+  public sourceId: string = '';
 
   public setSwitchType(type) {
     this.switchType = type;

@@ -11,7 +11,7 @@ import { CommonHttpService } from '../services/common-http.service';
 export class VideoPlayerComponent implements OnInit {
 
   public player; 
-  private sourceId: string = '';
+  public sourceId: string = '';
   public movieData = {};
   public baseUrl;
   public movieSource = '';

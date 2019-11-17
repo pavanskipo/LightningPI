@@ -17,8 +17,8 @@ export class ViewCardsComponent implements OnInit {
               ) { }
   private baseUrl = this._commonHttp.getBaseUrl();
   public cardsData = [];
-  private switchType = '';
-  private searchKey = '';
+  public switchType = '';
+  public searchKey = '';
   public detailsObject = {};
 
   // private popularMusicTags = []

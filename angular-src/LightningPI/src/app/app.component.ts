@@ -8,7 +8,7 @@ import { CommonSwitchService } from '../app/services/common-switch.service';
 })
 export class AppComponent {
   title = 'LightningPI';
-  private switchType: string = '';
+  public switchType: string = '';
   
   constructor(private _commonSwitch: CommonSwitchService) {
     this.switchType = this._commonSwitch.getSwitchType();
