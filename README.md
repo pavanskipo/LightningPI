@@ -1,9 +1,10 @@
 
 
 # LightningPI
-
-<img src="https://github.com/pavanskipo/LightningPI/blob/master/angular-src/LightningPI/src/favicon.png" width="15%">
-
+<p align="center">
+  <img src="https://github.com/pavanskipo/LightningPI/blob/master/angular-src/LightningPI/src/favicon.png" width="30%">
+</p>
+                                                                                                                
 A simple media streaming app using Node.js, MongoDB and Angular. 
 Upload Music and Movies to your server and stream the content over multiple devices.
 
@@ -56,3 +57,9 @@ db:  '<your database name>'
  4.  run `npm start`
 
 Open the app in your browser and enjoy !! ( ^ _ ^ )
+
+<br/>
+<p align="center">
+
+  [<img src="https://vangogh.teespring.com/v3/image/BSRsZ7Kbcb3Mipf1A-J3M7v7EgQ/480/560.jpg" width="15%">](https://teespring.com/en-GB/lightning-pi)
+</p>
