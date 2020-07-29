@@ -61,8 +61,8 @@ Open the app in your browser and enjoy !! ( ^ _ ^ )
 <br/>
 <p align="center">
 
-  [<img src="https://vangogh.teespring.com/v3/image/BSRsZ7Kbcb3Mipf1A-J3M7v7EgQ/480/560.jpg" width="15%">](https://teespring.com/en-GB/lightning-pi)
+  [<img src="https://vangogh.teespring.com/v3/image/OgWaSWMubvkPHDi3n9pwIIPtm-8/480/560.jpg" width="15%">](https://teespring.com/en-GB/spirit-hunter)
   &nbsp;
-  [<img src="https://vangogh.teespring.com/v3/image/lIadKcvEg6m2szDIX96htCBtDNE/480/560.jpg" width="15%">](https://teespring.com/en-GB/lightning-pi)
+  [<img src="https://vangogh.teespring.com/v3/image/P3DVDELgrT6P0x0f7frE_RYcgn8/480/560.jpg" width="15%">](https://teespring.com/en-GB/spirit-hunter)
   
 </p>
